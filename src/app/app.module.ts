@@ -7,16 +7,21 @@ import { AppComponent } from './app.component';
 import { registerLocaleData } from '@angular/common';
 import en from '@angular/common/locales/en';
 import { IconsProviderModule } from './icons-provider.module';
-import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { EditShipmentComponent } from './edit-shipment/edit-shipment.component';
+import { EditComponent } from './edit/edit.component';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
+
 registerLocaleData(en);
 
 @NgModule({
   declarations: [
     AppComponent,
-    EditShipmentComponent
+    EditShipmentComponent,
+    EditComponent
   ],
   imports: [
     BrowserModule,
@@ -25,7 +30,8 @@ registerLocaleData(en);
     IconsProviderModule,
     FormsModule,
     HttpClientModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    ReactiveFormsModule
   ],
   bootstrap: [AppComponent],
   providers   : [
