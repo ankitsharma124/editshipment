@@ -1,34 +1,64 @@
 
     <form
       nz-form
-      [nzLayout]="validateForm.get('formLayout')?.value"
       [formGroup]="validateForm"
       (ngSubmit)="submitForm()"
     >
+
+
       <nz-form-item>
-        <nz-form-label [nzSpan]="isHorizontal ? 4 : null">Form Layout</nz-form-label>
-        <nz-form-control [nzSpan]="isHorizontal ? 14 : null">
-          <nz-radio-group formControlName="formLayout">
-            <label nz-radio-button [nzValue]="'horizontal'">Horizontal</label>
-            <label nz-radio-button [nzValue]="'vertical'">Vertical</label>
-            <label nz-radio-button [nzValue]="'inline'">Inline</label>
-          </nz-radio-group>
+        <nz-form-label [nzSpan]="horizontal">Request Number</nz-form-label>
+        <nz-form-control [nzSpan]="horizontal" nzErrorTip="Please input Request Number!">
+          <input nz-input formControlName="req_number" placeholder="Request Number" />
+        </nz-form-control>
+      </nz-form-item>
+
+      <nz-form-item>
+        <nz-form-label [nzSpan]="horizontal">Requester Name</nz-form-label>
+        <nz-form-control [nzSpan]="horizontal" nzErrorTip="Please input Requester Name!">
+          <input nz-input formControlName="req_name" placeholder="Requester Name" />
         </nz-form-control>
       </nz-form-item>
       <nz-form-item>
-        <nz-form-label [nzSpan]="isHorizontal ? 4 : null">Field A</nz-form-label>
-        <nz-form-control [nzSpan]="isHorizontal ? 14 : null" nzErrorTip="Please input your username!">
-          <input nz-input formControlName="fieldA" placeholder="input placeholder" />
+        <nz-form-label [nzSpan]="horizontal">Request Email</nz-form-label>
+        <nz-form-control [nzSpan]="horizontal" nzErrorTip="Please input Request Email!">
+          <input nz-input formControlName="req_email" placeholder="Request Email" />
         </nz-form-control>
       </nz-form-item>
       <nz-form-item>
-        <nz-form-label [nzSpan]="isHorizontal ? 4 : null">Field B</nz-form-label>
-        <nz-form-control [nzSpan]="isHorizontal ? 14 : null" nzErrorTip="Please input your Password!">
-          <input nz-input formControlName="filedB" placeholder="input placeholder" />
+        <nz-form-label [nzSpan]="horizontal">From Location</nz-form-label>
+        <nz-form-control [nzSpan]="horizontal" nzErrorTip="Please input From Location!">
+          <input nz-input formControlName="from_loc" placeholder="From Location" />
         </nz-form-control>
       </nz-form-item>
       <nz-form-item>
-        <nz-form-control [nzSpan]="isHorizontal ? 14 : null" [nzOffset]="isHorizontal ? 4 : null">
+        <nz-form-label [nzSpan]="horizontal">To Location</nz-form-label>
+        <nz-form-control [nzSpan]="horizontal" nzErrorTip="Please input To Location!">
+          <input nz-input formControlName="to_loc" placeholder="To Location" />
+        </nz-form-control>
+      </nz-form-item>
+
+      <nz-form-item>
+      <nz-table #basicTable [nzData]="data.assets">
+        <thead>
+          <tr>
+            <th>AssetName</th>
+            <th>Requested_Date</th>
+            <th>Delivered_Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let asset of basicTable.data">
+            <td>{{ asset.asset_name }}</td>
+            <td>{{ asset.req_date }}</td>
+            <td>{{ asset.del_date }}</td>
+          </tr>
+        </tbody>
+      </nz-table>
+    </nz-form-item>
+
+      <nz-form-item>
+        <nz-form-control [nzSpan]="horizontal" [nzOffset]="horizontal">
           <button nz-button nzType="primary">Submit</button>
         </nz-form-control>
       </nz-form-item>
